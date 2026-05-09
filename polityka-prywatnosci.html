@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google Consent Mode v2 Default Settings -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    let storedConsent = localStorage.getItem('cookieConsentSettings');
+    if (storedConsent) {
+        let settings = JSON.parse(storedConsent);
+        gtag('consent', 'default', {
+            'analytics_storage': settings.analytics ? 'granted' : 'denied',
+            'ad_storage': settings.marketing ? 'granted' : 'denied',
+            'ad_user_data': settings.marketing ? 'granted' : 'denied',
+            'ad_personalization': settings.marketing ? 'granted' : 'denied',
+            'personalization_storage': 'denied',
+            'functionality_storage': 'granted',
+            'security_storage': 'granted'
+        });
+    } else {
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'personalization_storage': 'denied',
+            'functionality_storage': 'granted',
+            'security_storage': 'granted'
+        });
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Polityka Prywatności KingTos dev. Dowiedz się, jak dbamy o Twoje dane osobowe i jakie pliki cookie wykorzystujemy." />
+  <title>Polityka Prywatności | KingTos dev</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .legal-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 120px 32px 80px;
+    }
+    .legal-header {
+      margin-bottom: 60px;
+      text-align: center;
+    }
+    .legal-body {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .legal-section {
+      margin-bottom: 40px;
+    }
+    .legal-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--c-primary-light);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .legal-section h2 span {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      opacity: 0.5;
+    }
+    .legal-section p, .legal-section ul {
+      color: var(--c-text-dim);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .legal-section ul {
+      padding-left: 20px;
+    }
+    .legal-section li {
+      margin-bottom: 8px;
+    }
+    @media (max-width: 768px) {
+      .legal-body {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="gridCanvas"></canvas>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="navbar__container">
+      <!-- Logo -->
+      <a href="/" class="navbar__logo" id="navLogo">
+        <span class="navbar__logo-icon">
+        <svg viewBox="207 286 622 451" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(0, 1024) scale(0.1, -0.1)" fill="url(#logoGrad)">
+            <path d="M2070 7380 c0 -3 127 -132 283 -288 l283 -282 592 0 592 0 0 -1687 1 -1688 289 -294 289 -294 62 7 c34 3 267 6 518 6 l456 0 -502 503 -503 502 -2 1473 -3 1472 630 0 629 0 283 282 c156 156 283 285 283 288 0 3 -940 5 -2090 5 -1149 0 -2090 -2 -2090 -5z"/>
+            <path d="M6039 6254 c-817 -817 -1129 -1135 -1123 -1145 4 -8 502 -509 1106 -1115 604 -605 1104 -1108 1111 -1118 11 -15 56 -17 525 -19 281 -1 512 0 512 3 0 3 -506 511 -1126 1131 l-1125 1125 1123 1128 c618 620 1124 1130 1126 1134 1 4 -223 7 -498 7 l-500 0 -1131 -1131z"/>
+          </g>
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6C63FF" />
+              <stop offset="100%" stop-color="#00D4FF" />
+            </linearGradient>
+          </defs>
+        </svg>
+        </span>
+        <span class="navbar__logo-text">
+          <span class="navbar__logo-king">King</span
+          ><span class="navbar__logo-tos">Tos dev</span>
+        </span>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="navbar__links" id="navLinks">
+        <li>
+          <a
+            href="/"
+            class="navbar__link"
+            data-text="Start"
+            >Start</a
+          >
+        </li>
+        <li>
+          <a href="/#uslugi" class="navbar__link" data-text="Usługi">Usługi</a>
+        </li>
+        <li>
+          <a href="/#realizacje" class="navbar__link" data-text="Realizacje"
+            >Realizacje</a
+          >
+        </li>
+        <li>
+          <a href="/o-nas" class="navbar__link" data-text="O nas">O nas</a>
+        </li>
+        <li>
+          <a href="/#kontakt" class="navbar__link" data-text="Kontakt"
+            >Kontakt</a
+          >
+        </li>
+      </ul>
+
+      <!-- CTA Button -->
+      <a href="/#kontakt" class="btn btn--primary btn--nav" id="navCta">
+        <span class="btn__text">Wycena projektu</span>
+        <span class="btn__icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button class="navbar__hamburger" id="navHamburger" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="legal-content">
+    <header class="legal-header">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        <span class="hero__badge-text">Ostatnia aktualizacja: 07.05.2026</span>
+      </div>
+      <h1 class="hero__title">Polityka <span class="hero__title-word--gradient">Prywatności</span></h1>
+    </header>
+
+    <div class="legal-body">
+      <section class="legal-section">
+        <h2><span>01.</span> Administrator Danych Osobowych</h2>
+        <p>Administratorem danych osobowych w rozumieniu RODO (Ogólnego Rozporządzenia o Ochronie Danych) są:</p>
+        <ul>
+          <li><strong>Maciej Toś</strong></li>
+          <li><strong>Krzysztof Król</strong></li>
+          <li><strong>Damian Wójcik</strong></li>
+        </ul>
+        <p>prowadzący wspólnie działalność nierejestrowaną pod nazwą <strong>KingTos dev</strong> z siedzibą w <strong>Katowice, Polska</strong>. Kontakt w sprawach ochrony danych jest możliwy pod adresem e-mail: <a href="mailto:kontakt@kingtos.pl" style="color: var(--c-accent);">kontakt@kingtos.pl</a>.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2><span>02.</span> Cele i podstawy przetwarzania</h2>
+        <p>Przetwarzamy Twoje dane w następujących celach:</p>
+        <ul>
+          <li><strong>Obsługa zapytań:</strong> Przetwarzamy dane podane w formularzu kontaktowym (imię, e-mail, treść wiadomości) na podstawie Twojej zgody (Art. 6 ust. 1 lit. a RODO).</li>
+          <li><strong>Realizacja usług:</strong> Niezbędne do podjęcia działań przed zawarciem umowy lub realizacji zamówienia (Art. 6 ust. 1 lit. b RODO).</li>
+          <li><strong>Analityka i statystyki:</strong> Optymalizacja strony na podstawie prawnie uzasadnionego interesu (Art. 6 ust. 1 lit. f RODO).</li>
+          <li><strong>Marketing:</strong> Wyłącznie po wyrażeniu przez Ciebie dobrowolnej zgody (Art. 6 ust. 1 lit. a RODO).</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2><span>03.</span> Pliki Cookies i Technologie Śledzące</h2>
+        <p>Nasza strona korzysta z mechanizmu <strong>Google Consent Mode v2</strong>. Oznacza to, że:</p>
+        <ul>
+          <li><strong>Niezbędne pliki cookie:</strong> Są zawsze aktywne, aby strona mogła działać poprawnie.</li>
+          <li><strong>Analityczne i Marketingowe:</strong> Są ładowane wyłącznie po Twojej wyraźnej zgodzie udzielonej w banerze cookies.</li>
+        </ul>
+        <p>Możesz w każdej chwili zmienić swoje preferencje klikając w ikonę ciasteczka w dolnym rogu ekranu.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2><span>04.</span> Prawa Użytkownika</h2>
+        <p>W związku z przetwarzaniem danych, przysługują Ci następujące prawa:</p>
+        <ul>
+          <li>Prawo dostępu do swoich danych oraz otrzymania ich kopii.</li>
+          <li>Prawo do sprostowania (poprawiania) swoich danych.</li>
+          <li>Prawo do usunięcia danych ("prawo do bycia zapomnianym").</li>
+          <li>Prawo do ograniczenia przetwarzania.</li>
+          <li>Prawo do przenoszenia danych.</li>
+          <li>Prawo do wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (PUODO).</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2><span>05.</span> Okres Przechowywania Danych</h2>
+        <p>Twoje dane przechowujemy tak długo, jak jest to niezbędne do realizacji celu, dla którego zostały zebrane (np. do zakończenia korespondencji lub realizacji projektu), a po tym czasie przez okres wymagany przepisami prawa lub do momentu wycofania zgody.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__glow"></div>
+    <div class="site-footer__container">
+      
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <a href="/" class="navbar__logo">
+            <span class="navbar__logo-icon">
+            <svg viewBox="207 286 622 451" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(0, 1024) scale(0.1, -0.1)" fill="url(#logoGradFooter)">
+                <path d="M2070 7380 c0 -3 127 -132 283 -288 l283 -282 592 0 592 0 0 -1687 1 -1688 289 -294 289 -294 62 7 c34 3 267 6 518 6 l456 0 -502 503 -503 502 -2 1473 -3 1472 630 0 629 0 283 282 c156 156 283 285 283 288 0 3 -940 5 -2090 5 -1149 0 -2090 -2 -2090 -5z"/>
+                <path d="M6039 6254 c-817 -817 -1129 -1135 -1123 -1145 4 -8 502 -509 1106 -1115 604 -605 1104 -1108 1111 -1118 11 -15 56 -17 525 -19 281 -1 512 0 512 3 0 3 -506 511 -1126 1131 l-1125 1125 1123 1128 c618 620 1124 1130 1126 1134 1 4 -223 7 -498 7 l-500 0 -1131 -1131z"/>
+              </g>
+              <defs>
+                <linearGradient id="logoGradFooter" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#6C63FF" />
+                  <stop offset="100%" stop-color="#00D4FF" />
+                </linearGradient>
+              </defs>
+            </svg>
+            </span>
+            <span class="navbar__logo-text">
+              <span class="navbar__logo-king">King</span
+              ><span class="navbar__logo-tos">Tos dev</span>
+            </span>
+          </a>
+          <p class="site-footer__desc">Projektujemy i budujemy zaawansowane ekosystemy cyfrowe. Specjalizujemy się w nowoczesnym web designie oraz automatyzacji procesów biznesowych.</p>
+          <div class="site-footer__socials">
+            <a href="https://www.linkedin.com/company/kingtos-strony-i-automatyzacje/" target="_blank" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@kingtosdev" target="_blank" aria-label="TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/kingtos_dev" target="_blank" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="site-footer__nav">
+          <div class="footer-nav-col">
+            <h4>Nawigacja</h4>
+            <a href="/#hero">Start</a>
+            <a href="/#uslugi">Usługi</a>
+            <a href="/#realizacje">Realizacje</a>
+            <a href="/o-nas">O nas</a>
+            <a href="/#kontakt">Kontakt</a>
+          </div>
+          <div class="footer-nav-col">
+            <h4>Kontakt</h4>
+            <a href="mailto:kontakt@kingtos.pl" class="footer-contact-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              kontakt@kingtos.pl
+            </a>
+            <a href="tel:+48602305984" class="footer-contact-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              +48 602 305 984
+            </a>
+            <p class="footer-location">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Katowice, Polska
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <div class="footer-copyright">
+          <p>&copy; 2026 KingTos dev. Wszelkie prawa zastrzeżone.</p>
+        </div>
+        <div class="site-footer__legal">
+          <a href="/polityka-prywatnosci">Polityka Prywatności</a>
+          <a href="/regulamin">Regulamin</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google Consent Mode v2 Default Settings -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    let storedConsent = localStorage.getItem('cookieConsentSettings');
+    if (storedConsent) {
+      let settings = JSON.parse(storedConsent);
+      gtag('consent', 'default', {
+        'analytics_storage': settings.analytics ? 'granted' : 'denied',
+        'ad_storage': settings.marketing ? 'granted' : 'denied',
+        'ad_user_data': settings.marketing ? 'granted' : 'denied',
+        'ad_personalization': settings.marketing ? 'granted' : 'denied',
+        'personalization_storage': 'denied',
+        'functionality_storage': 'granted',
+        'security_storage': 'granted'
+      });
+    } else {
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'personalization_storage': 'denied',
+        'functionality_storage': 'granted',
+        'security_storage': 'granted'
+      });
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="KingTos dev — Projektujemy i tworzymy nowoczesne strony internetowe, automatyzacje i przebudowujemy istniejące witryny. Maciej Toś & Krzysztof Król." />
+  <meta name="theme-color" content="#06060e" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <title>KingTos dev | Strony Internetowe & Automatyzacje</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="preload" href="style.css" as="style" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kingtos.pl/" />
+  <meta property="og:title" content="KingTos dev | Strony Internetowe & Automatyzacje" />
+  <meta property="og:description"
+    content="KingTos dev — Projektujemy i tworzymy nowoczesne strony internetowe, automatyzacje i przebudowujemy istniejące witryny. Maciej Toś & Krzysztof Król." />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://kingtos.pl/" />
+  <meta property="twitter:title" content="KingTos dev | Strony Internetowe & Automatyzacje" />
+  <meta property="twitter:description"
+    content="KingTos dev — Projektujemy i tworzymy nowoczesne strony internetowe, automatyzacje i przebudowujemy istniejące witryny. Maciej Toś & Krzysztof Król." />
+</head>
+
+<body>
+  <!-- ══════════════════════════════════════════════
+         INTERACTIVE GRID CANVAS (background)
+         ══════════════════════════════════════════════ -->
+  <canvas id="gridCanvas"></canvas>
+
+  <!-- Ambient glow orbs -->
+  <div class="ambient-orb ambient-orb--1"></div>
+  <div class="ambient-orb ambient-orb--2"></div>
+  <div class="ambient-orb ambient-orb--3"></div>
+
+  <!-- ══════════════════════════════════════════════
+         NAVBAR
+         ══════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__container">
+      <!-- Logo -->
+      <a href="/" class="navbar__logo" id="navLogo">
+        <span class="navbar__logo-icon">
+          <svg viewBox="207 286 622 451" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(0, 1024) scale(0.1, -0.1)" fill="url(#logoGrad)">
+              <path
+                d="M2070 7380 c0 -3 127 -132 283 -288 l283 -282 592 0 592 0 0 -1687 1 -1688 289 -294 289 -294 62 7 c34 3 267 6 518 6 l456 0 -502 503 -503 502 -2 1473 -3 1472 630 0 629 0 283 282 c156 156 283 285 283 288 0 3 -940 5 -2090 5 -1149 0 -2090 -2 -2090 -5z" />
+              <path
+                d="M6039 6254 c-817 -817 -1129 -1135 -1123 -1145 4 -8 502 -509 1106 -1115 604 -605 1104 -1108 1111 -1118 11 -15 56 -17 525 -19 281 -1 512 0 512 3 0 3 -506 511 -1126 1131 l-1125 1125 1123 1128 c618 620 1124 1130 1126 1134 1 4 -223 7 -498 7 l-500 0 -1131 -1131z" />
+            </g>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#6C63FF" />
+                <stop offset="100%" stop-color="#00D4FF" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="navbar__logo-text">
+          <span class="navbar__logo-king">King</span><span class="navbar__logo-tos">Tos dev</span>
+        </span>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="navbar__links" id="navLinks">
+        <li>
+          <a href="/#hero" class="navbar__link navbar__link--active" data-text="Start">Start</a>
+        </li>
+        <li>
+          <a href="/#uslugi" class="navbar__link" data-text="Usługi">Usługi</a>
+        </li>
+        <li>
+          <a href="/#realizacje" class="navbar__link" data-text="Realizacje">Realizacje</a>
+        </li>
+        <li>
+          <a href="/o-nas" class="navbar__link" data-text="O nas">O nas</a>
+        </li>
+        <li>
+          <a href="/#kontakt" class="navbar__link" data-text="Kontakt">Kontakt</a>
+        </li>
+      </ul>
+
+      <!-- CTA Button -->
+      <a href="/#kontakt" class="btn btn--primary btn--nav" id="navCta">
+        <span class="btn__text">Wycena projektu</span>
+        <span class="btn__icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button class="navbar__hamburger" id="navHamburger" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════
+         HERO SECTION
+         ══════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__container">
+      <!-- Centered Hero Content -->
+      <div class="hero__badge" id="heroBadge">
+        <span class="hero__badge-dot"></span>
+        <span class="hero__badge-text">Dostępni na nowe projekty — 2026</span>
+      </div>
+
+      <h1 class="hero__title" id="heroTitle">
+        <span class="hero__title-line">
+          <span class="hero__title-word" data-delay="0">Tworzymy</span>
+        </span>
+        <span class="hero__title-line">
+          <span class="hero__title-word hero__title-word--gradient" data-delay="1">przyszłość</span>
+        </span>
+        <span class="hero__title-line">
+          <span class="hero__title-word" data-delay="2">w sieci</span>
+          <span class="hero__title-word hero__title-word--accent" data-delay="3">.</span>
+        </span>
+      </h1>
+
+      <p class="hero__subtitle" id="heroSubtitle">
+        Nowoczesne strony internetowe, inteligentne automatyzacje i
+        transformacja cyfrowa Twojego biznesu. Tworzymy rozwiązania, które
+        robią różnicę.
+      </p>
+
+      <div class="hero__actions" id="heroActions">
+        <a href="#kontakt" class="btn btn--primary btn--lg" id="heroCta1">
+          <span class="btn__text">Rozpocznij projekt</span>
+          <span class="btn__icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="btn__glow"></span>
+          <span class="btn__shimmer"></span>
+        </a>
+        <a href="#realizacje" class="btn btn--outline btn--lg" id="heroCta2">
+          <span class="btn__text">Zobacz realizacje</span>
+          <span class="btn__icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <div class="hero__tech" id="heroTech">
+        <span class="hero__tech-label">Technologie:</span>
+        <div class="hero__tech-list">
+          <span class="hero__tech-badge" data-tech="react">React</span>
+          <span class="hero__tech-badge" data-tech="next">Next.js</span>
+          <span class="hero__tech-badge" data-tech="node">Node.js</span>
+          <span class="hero__tech-badge" data-tech="ai">AI / ML</span>
+          <span class="hero__tech-badge" data-tech="auto">Automatyzacje</span>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+         SERVICES SECTION
+         ══════════════════════════════════════════════ -->
+  <section class="services-hero" id="uslugi">
+    <div class="services-hero__container">
+      <div class="services-hero__header">
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          <span class="hero__badge-text">Kompleksowa oferta</span>
+        </div>
+        <h2 class="services-hero__title">
+          Oferowane <span class="services-hero__title-accent">usługi</span>
+        </h2>
+        <p class="services-hero__subtitle">
+          Dostarczamy innowacyjne rozwiązania, które napędzają rozwój Twojego
+          biznesu w cyfrowym świecie. Poznaj nasze specjalizacje.
+        </p>
+      </div>
+
+      <div class="services-hero__grid" data-nosnippet>
+        <!-- Panel 1 -->
+        <div class="service-panel">
+          <div class="service-panel__glow"></div>
+          <div class="service-panel__content">
+            <div class="service-panel__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 8L3 12L7 16" stroke="url(#iconGrad1)" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M17 8L21 12L17 16" stroke="url(#iconGrad1)" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M14 4L10 20" stroke="url(#iconGrad1)" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <defs>
+                  <linearGradient id="iconGrad1" x1="3" y1="4" x2="21" y2="20" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#6C63FF" />
+                    <stop offset="1" stop-color="#00D4FF" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <h3 class="service-panel__title">Tworzenie Stron<br />od Zera</h3>
+            <p class="service-panel__desc">
+              Projektujemy i wdrażamy nowoczesne, ultra-szybkie i skalowalne
+              aplikacje webowe oparte o najnowsze technologie takie jak React
+              i Next.js.
+            </p>
+            <div class="service-panel__tech">
+              <span>React</span><span>Next.js</span><span>UI/UX</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2 -->
+        <div class="service-panel">
+          <div class="service-panel__glow"></div>
+          <div class="service-panel__content">
+            <div class="service-panel__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3V6" stroke="url(#iconGrad2)" stroke-width="2" stroke-linecap="round" />
+                <path d="M12 18V21" stroke="url(#iconGrad2)" stroke-width="2" stroke-linecap="round" />
+                <path d="M21 12H18" stroke="url(#iconGrad2)" stroke-width="2" stroke-linecap="round" />
+                <path d="M6 12H3" stroke="url(#iconGrad2)" stroke-width="2" stroke-linecap="round" />
+                <path d="M18.364 5.63604L16.2426 7.75736" stroke="url(#iconGrad2)" stroke-width="2"
+                  stroke-linecap="round" />
+                <path d="M7.75736 16.2426L5.63604 18.364" stroke="url(#iconGrad2)" stroke-width="2"
+                  stroke-linecap="round" />
+                <path d="M18.364 18.364L16.2426 16.2426" stroke="url(#iconGrad2)" stroke-width="2"
+                  stroke-linecap="round" />
+                <path d="M7.75736 7.75736L5.63604 5.63604" stroke="url(#iconGrad2)" stroke-width="2"
+                  stroke-linecap="round" />
+                <circle cx="12" cy="12" r="3" stroke="url(#iconGrad2)" stroke-width="2" />
+                <defs>
+                  <linearGradient id="iconGrad2" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#00D4FF" />
+                    <stop offset="1" stop-color="#00FFB2" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <h3 class="service-panel__title">
+              Renowacja<br />Istniejących WWW
+            </h3>
+            <p class="service-panel__desc">
+              Poddajemy przestarzałe witryny kompleksowej modernizacji.
+              Podnosimy wyniki Lighthouse do 100/100, poprawiamy UX/UI i
+              maksymalizujemy konwersję.
+            </p>
+            <div class="service-panel__tech">
+              <span>Audyt</span><span>Lighthouse</span><span>Redesign</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3 -->
+        <div class="service-panel">
+          <div class="service-panel__glow"></div>
+          <div class="service-panel__content">
+            <div class="service-panel__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="url(#iconGrad3)" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" fill="rgba(108,99,255,0.1)" />
+                <defs>
+                  <linearGradient id="iconGrad3" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#6C63FF" />
+                    <stop offset="1" stop-color="#00FFB2" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <h3 class="service-panel__title">Automatyzacje<br />Stron</h3>
+            <p class="service-panel__desc">
+              Zastępujemy powtarzalną pracę inteligentnymi systemami. Wdrażamy
+              integracje AI, automatyczne formularze i asystentów, by strona
+              pracowała 24/7.
+            </p>
+            <div class="service-panel__tech">
+              <span>AI / ML</span><span>Automatyzacja</span><span>API</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+         PORTFOLIO SECTION
+         ══════════════════════════════════════════════ -->
+  <section class="portfolio-hero" id="realizacje">
+    <div class="portfolio-hero__header">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        <span class="hero__badge-text">Portfolio</span>
+      </div>
+      <h2 class="portfolio-hero__title">
+        Portfolio <span class="services-hero__title-accent">Realizacji</span>
+      </h2>
+      <p class="portfolio-hero__subtitle">
+        Poznaj wybrane projekty, które z sukcesem wdrożyliśmy dla naszych klientów, łącząc estetykę z najwyższą
+        wydajnością.
+      </p>
+    </div>
+
+    <div class="portfolio-hero__projects" data-nosnippet>
+      <!-- Project 1 (Image Right) -->
+      <div class="project-showcase">
+        <div class="project-showcase__content">
+          <span class="project-showcase__tag">E-learning</span>
+          <h3 class="project-showcase__title">Sukalina Chess</h3>
+          <p class="project-showcase__desc">Nowoczesna platforma edukacyjna stworzona dla profesjonalnej instruktorki szachów. Witryna łączy przejrzysty design z interaktywną minigrą testową, pozwalającą użytkownikom na sprawdzenie swoich umiejętności przed zapisaniem się na profesjonalne lekcje.</p>
+          <div class="service-panel__tech">
+            <span>Vue.js</span><span>Three.js</span><span>WebSockets</span>
+          </div>
+          <a href="https://sukalinachess.netlify.app" target="_blank" class="portfolio__card-btn">
+            Zobacz na żywo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </a>
+        </div>
+        <div class="project-showcase__visual">
+          <div class="project-showcase__visual-inner project-tilt">
+            <div class="project-showcase__glow"></div>
+            <img src="assets/portfolio/chess.webp" alt="Sukalina Chess" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 (Image Left) -->
+      <div class="project-showcase project-showcase--reverse">
+        <div class="project-showcase__content">
+          <span class="project-showcase__tag">Stomatologia Premium</span>
+          <h3 class="project-showcase__title">Dentiq Modern</h3>
+          <p class="project-showcase__desc">Elegancka, ultraszybka i w pełni responsywna strona internetowa dla
+            prestiżowej kliniki stomatologicznej. Wyposażona w zaawansowany system rezerwacji wizyt online oraz
+            wirtualny spacer, co znacząco zwiększyło konwersję.</p>
+          <div class="service-panel__tech">
+            <span>Next.js</span><span>Tailwind</span><span>Booking API</span>
+          </div>
+          <a href="https://dentiq-modern-stomatology.vercel.app" target="_blank" class="portfolio__card-btn">
+            Zobacz na żywo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </a>
+        </div>
+        <div class="project-showcase__visual">
+          <div class="project-showcase__visual-inner project-tilt">
+            <div class="project-showcase__glow"></div>
+            <img src="assets/portfolio/dentiq.webp" alt="Dentiq Stomatology" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 (Image Right) -->
+      <div class="project-showcase">
+        <div class="project-showcase__content">
+          <span class="project-showcase__tag">Luksusowy Hotel</span>
+          <h3 class="project-showcase__title">Hotel Zakopane</h3>
+          <p class="project-showcase__desc">Ekskluzywna witryna hotelowa w sercu polskich gór. Zaprojektowana z myślą o
+            najwyższych doznaniach wizualnych, oferująca immersyjne, pełnoekranowe zdjęcia w wysokiej rozdzielczości
+            oraz bezproblemowy, zintegrowany system rezerwacji pokoi.</p>
+          <div class="service-panel__tech">
+            <span>React</span><span>Framer Motion</span><span>Stripe API</span>
+          </div>
+          <a href="https://hotel-zakopane.netlify.app" target="_blank" class="portfolio__card-btn">
+            Zobacz na żywo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </a>
+        </div>
+        <div class="project-showcase__visual">
+          <div class="project-showcase__visual-inner project-tilt">
+            <div class="project-showcase__glow"></div>
+            <img src="assets/portfolio/hotel.webp" alt="Hotel Zakopane" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+         CONTACT SECTION (MULTI-STEP WIZARD)
+         ══════════════════════════════════════════════ -->
+  <section class="contact-section" id="kontakt">
+    <div class="contact-section__container">
+
+      <div class="contact-section__header">
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          <span class="hero__badge-text">Darmowa wycena</span>
+        </div>
+        <h2 class="contact-section__title">
+          Skonfiguruj swój <span class="services-hero__title-accent">Projekt</span>
+        </h2>
+      </div>
+
+      <div class="contact-wizard">
+        <div class="contact-wizard__glow"></div>
+
+        <!-- Progress Bar -->
+        <div class="wizard-progress">
+          <div class="wizard-progress__step active" data-step="1">1. Cel</div>
+          <div class="wizard-progress__line">
+            <div class="wizard-progress__line-fill"></div>
+          </div>
+          <div class="wizard-progress__step" data-step="2">2. Opcje</div>
+          <div class="wizard-progress__line">
+            <div class="wizard-progress__line-fill"></div>
+          </div>
+          <div class="wizard-progress__step" data-step="3">3. Dane</div>
+        </div>
+
+        <form id="contactForm" class="wizard-form">
+
+          <!-- STEP 1 -->
+          <div class="wizard-step active" id="step-1">
+            <h3 class="wizard-step__title">W czym możemy Ci pomóc?</h3>
+            <div class="wizard-options-grid">
+              <label class="wizard-option">
+                <input type="radio" name="project_type" value="nowa_strona" checked>
+                <div class="wizard-option__card">
+                  <div class="wizard-option__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.71-2.13.71-2.13l-1.58-1.58s-1.29 0-2.13.71z" />
+                      <path d="m12 15-3-3l1.5-1.5L12 12l1.5-1.5L15 12l-1.5 1.5L12 15z" />
+                      <path d="m13 8 2-2 1 1" />
+                      <path d="m9 12 2 2 1-1" />
+                      <path d="M11.79 8.21c.73-.73 1.21-1.46 1.21-1.46l2.5 2.5s-.73.48-1.46 1.21L11.79 8.21z" />
+                      <path
+                        d="M16.5 4.5s-2.5 0-4.5 2.5c-1.12 1.4-1.5 3.5-1.5 3.5l1.5 1.5s2.1-.38 3.5-1.5c2.5-2 2.5-4.5 2.5-4.5z" />
+                    </svg>
+                  </div>
+                  <h4>Nowa strona</h4>
+                  <p>Budowa nowoczesnej witryny od podstaw</p>
+                </div>
+              </label>
+              <label class="wizard-option">
+                <input type="radio" name="project_type" value="renowacja">
+                <div class="wizard-option__card">
+                  <div class="wizard-option__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M12 3v1M12 20v1M4.22 4.22l.71.71M18.36 18.36l.71.71M1 12h1M20 12h1M4.22 19.78l.71-.71M18.36 5.64l.71-.71M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z" />
+                    </svg>
+                  </div>
+                  <h4>Renowacja</h4>
+                  <p>Redesign i optymalizacja obecnej witryny</p>
+                </div>
+              </label>
+              <label class="wizard-option">
+                <input type="radio" name="project_type" value="automatyzacja">
+                <div class="wizard-option__card">
+                  <div class="wizard-option__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg>
+                  </div>
+                  <h4>Automatyzacja</h4>
+                  <p>Usprawnienie procesów biznesowych</p>
+                </div>
+              </label>
+            </div>
+            <div class="wizard-actions">
+              <button type="button" class="wizard-btn wizard-btn--next" data-to="2">
+                Kontynuuj
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="wizard-step" id="step-2">
+            <h3 class="wizard-step__title">Co Cię interesuje?</h3>
+
+            <!-- Dynamic Tags for Nowa Strona -->
+            <div class="wizard-tags" id="tags-nowa_strona">
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Landing Page"><span>Landing Page
+                  (Szybka wizytówka)</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Multi-page"><span>Strona firmowa
+                  (Multi-page)</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="E-commerce"><span>Sklep
+                  internetowy</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Animations"><span>Animacje GSAP /
+                  3D</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="CMS"><span>Panel zarządzania
+                  CMS</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Inne"><span>Inne (opiszę w
+                  wiadomości)</span></label>
+            </div>
+
+            <!-- Dynamic Tags for Renowacja (Hidden by default) -->
+            <div class="wizard-tags" id="tags-renowacja" style="display: none;">
+              <label class="wizard-tag"><input type="checkbox" name="features" value="UI/UX Redesign"><span>Nowoczesny
+                  Design UI/UX</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="SEO/Perf"><span>Optymalizacja
+                  szybkości (SEO)</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Migration"><span>Przebudowa na
+                  nowszy silnik</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="New Features"><span>Dodanie nowych
+                  funkcji</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Bugfixing"><span>Poprawa błędów i
+                  RWD</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Inne"><span>Inne (opiszę w
+                  wiadomości)</span></label>
+            </div>
+
+            <!-- Dynamic Tags for Automatyzacja (Hidden by default) -->
+            <div class="wizard-tags" id="tags-automatyzacja" style="display: none;">
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Scripts"><span>Skrypty Python /
+                  Node.js</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Social Media"><span>Automatyzacja
+                  Social Media</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="AI Bot"><span>Boty i AI (ChatGPT
+                  API)</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Integrations"><span>Integracje API
+                  / CRM</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Scraping"><span>Pobieranie danych
+                  (Scraping)</span></label>
+              <label class="wizard-tag"><input type="checkbox" name="features" value="Inne"><span>Inne (opiszę w
+                  wiadomości)</span></label>
+            </div>
+
+            <div class="wizard-actions wizard-actions--split">
+              <button type="button" class="wizard-btn wizard-btn--prev" data-to="1">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Wstecz
+              </button>
+              <button type="button" class="wizard-btn wizard-btn--next" data-to="3">
+                Dalej
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="wizard-step" id="step-3">
+            <h3 class="wizard-step__title">Ostatni krok - Twoje dane</h3>
+            <div class="wizard-inputs">
+              <div class="input-group">
+                <input type="text" id="name" required placeholder=" ">
+                <label for="name">Imię i nazwisko / Nazwa firmy</label>
+              </div>
+              <div class="input-group">
+                <input type="email" id="email" required placeholder=" ">
+                <label for="email">Adres E-mail</label>
+              </div>
+              <div class="input-group" id="group-website" style="display: none;">
+                <input type="url" id="website_url" placeholder=" ">
+                <label for="website_url">Link do obecnej strony (URL)</label>
+              </div>
+              <div class="input-group">
+                <textarea id="message" rows="2" placeholder=" "></textarea>
+                <label for="message">Dodatkowe informacje (opcjonalnie)</label>
+              </div>
+            </div>
+            <div class="wizard-actions wizard-actions--split">
+              <button type="button" class="wizard-btn wizard-btn--prev" data-to="2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Wstecz
+              </button>
+              <button type="submit" class="wizard-btn wizard-btn--submit">
+                Wyślij zapytanie
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+        <p class="wizard-gdpr-info">Wysyłając formularz, zgadzasz się na przetwarzanie Twoich danych zgodnie z naszą <a
+            href="/polityka-prywatnosci">Polityką Prywatności</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+         FOOTER
+         ══════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="site-footer__glow"></div>
+    <div class="site-footer__container">
+
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <a href="/" class="navbar__logo">
+            <span class="navbar__logo-icon">
+              <svg viewBox="207 286 622 451" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(0, 1024) scale(0.1, -0.1)" fill="url(#logoGradFooter)">
+                  <path
+                    d="M2070 7380 c0 -3 127 -132 283 -288 l283 -282 592 0 592 0 0 -1687 1 -1688 289 -294 289 -294 62 7 c34 3 267 6 518 6 l456 0 -502 503 -503 502 -2 1473 -3 1472 630 0 629 0 283 282 c156 156 283 285 283 288 0 3 -940 5 -2090 5 -1149 0 -2090 -2 -2090 -5z" />
+                  <path
+                    d="M6039 6254 c-817 -817 -1129 -1135 -1123 -1145 4 -8 502 -509 1106 -1115 604 -605 1104 -1108 1111 -1118 11 -15 56 -17 525 -19 281 -1 512 0 512 3 0 3 -506 511 -1126 1131 l-1125 1125 1123 1128 c618 620 1124 1130 1126 1134 1 4 -223 7 -498 7 l-500 0 -1131 -1131z" />
+                </g>
+                <defs>
+                  <linearGradient id="logoGradFooter" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#6C63FF" />
+                    <stop offset="100%" stop-color="#00D4FF" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <span class="navbar__logo-text">
+              <span class="navbar__logo-king">King</span><span class="navbar__logo-tos">Tos dev</span>
+            </span>
+          </a>
+          <p class="site-footer__desc">Projektujemy i budujemy zaawansowane ekosystemy cyfrowe. Specjalizujemy się w
+            nowoczesnym web designie oraz automatyzacji procesów biznesowych.</p>
+          <div class="site-footer__socials">
+            <a href="https://www.linkedin.com/company/kingtos-strony-i-automatyzacje/" target="_blank" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@kingtosdev" target="_blank" aria-label="TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/kingtos_dev" target="_blank" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="site-footer__nav">
+          <div class="footer-nav-col">
+            <h4>Nawigacja</h4>
+            <a href="/#hero">Start</a>
+            <a href="/#uslugi">Usługi</a>
+            <a href="/#realizacje">Realizacje</a>
+            <a href="/o-nas">O nas</a>
+            <a href="/#kontakt">Kontakt</a>
+          </div>
+          <div class="footer-nav-col">
+            <h4>Kontakt</h4>
+            <a href="mailto:kontakt@kingtos.pl" class="footer-contact-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              kontakt@kingtos.pl
+            </a>
+            <a href="tel:+48602305984" class="footer-contact-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              +48 602 305 984
+            </a>
+            <p class="footer-location">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Katowice, Polska
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <div class="footer-copyright">
+          <p>&copy; 2026 KingTos dev. Wszelkie prawa zastrzeżone.</p>
+        </div>
+        <div class="site-footer__legal">
+          <a href="/polityka-prywatnosci">Polityka Prywatności</a>
+          <a href="/regulamin">Regulamin</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+
+</html>
